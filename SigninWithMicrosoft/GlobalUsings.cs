@@ -1,0 +1,10 @@
+﻿global using Microsoft.Identity.Client;
+global using SigninWithMicrosoft.Helpers.Functions;
+global using SigninWithMicrosoft.Models;
+global using SigninWithMicrosoft.Services;
+global using SigninWithMicrosoft.ViewModels;
+global using SigninWithMicrosoft.Views.Pages;
+global using System.ComponentModel;
+global using System.Globalization;
+global using System.Runtime.CompilerServices;
+global using System.Windows.Input;

@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SigninWithMicrosoft.Views.Pages.UserProfilePage"
+    xmlns:c="clr-namespace:SigninWithMicrosoft.Helpers.Converters"
+    xmlns:m="clr-namespace:SigninWithMicrosoft.Models"
+    xmlns:rv="clr-namespace:SigninWithMicrosoft.Views.ReuseableViews"
+    xmlns:vm="clr-namespace:SigninWithMicrosoft.ViewModels"
+    x:DataType="vm:UserProfileViewModel">
+
+    <ContentPage.BindingContext>
+        <vm:UserProfileViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid
+        RowDefinitions="50,*"
+        ColumnDefinitions="*">
+
+        <!--Header-->
+        <Grid
+            Grid.Row="0"
+            Grid.Column="0"
+            RowDefinitions="*"
+            ColumnDefinitions="35,*"
+            ColumnSpacing="10"
+            Padding="10,0"
+            BackgroundColor="{StaticResource HeaderBarFillColor}">
+
+            <rv:BackImageView 
+                Grid.Row="0"
+                Grid.Column="0" />
+
+            <Label 
+                Grid.Row="0"
+                Grid.Column="1"
+                Text="User Profile"
+                TextColor="{StaticResource HeaderBarFillTextColor}"
+                FontSize="22" />
+
+            <rv:BusyIndicatorView
+                Grid.Row="0" 
+                Grid.Column="0"
+                Grid.ColumnSpan="2" />
+        </Grid>
+
+        <!--Body-->
+        <ScrollView
+            Grid.Row="1"
+            Grid.Column="0"
+            Orientation="Vertical"
+            Padding="5,0"
+            VerticalScrollBarVisibility="Never">
+
+            <!--Body-->
+            <Grid
+                RowDefinitions="180,25,25,5,35,35,35,35,35,35,35,35,35,35,*"
+                ColumnDefinitions="*,*"
+                Padding="10"
+                HorizontalOptions="Fill">
+
+                <Border
+                    Grid.Row="0" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    StrokeShape="RoundRectangle 90"
+                    Stroke="{Binding UserDetail.InitialBgColor, Mode=OneTime}"
+                    BackgroundColor="{Binding UserDetail.InitialBgColor, Mode=OneTime}"
+                    HeightRequest="180"
+                    WidthRequest="180">
+
+                    <VerticalStackLayout
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center">
+
+                        <Image 
+                            Source="{Binding UserDetail.ProfilePicture, Mode=OneTime}"
+                            HeightRequest="180"
+                            WidthRequest="180"
+                            IsVisible="{Binding UserDetail.IsProfilePicture, Mode=OneTime}"/>
+
+                        <Label
+                            Text="{Binding UserDetail.UserNameInitial, Mode=OneTime}"
+                            TextColor="{Binding UserDetail.InitialFgColor, Mode=OneTime}"
+                            FontSize="80"
+                            IsVisible="{Binding UserDetail.IsProfilePicture, Converter={c:InverseBoolConverter}, Mode=OneTime}"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding UserDetail.DisplayName, Mode=OneTime}"
+                    TextColor="{StaticResource PageFillTextColor}"
+                    FontSize="18"
+                    LineBreakMode="TailTruncation"
+                    HorizontalOptions="Center"
+                    VerticalTextAlignment="Center"/>
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Text="{Binding UserDetail.UserPrincipalName, Mode=OneTime}"
+                    TextColor="{StaticResource PageFillTextColor}"
+                    FontSize="18"
+                    LineBreakMode="TailTruncation"
+                    HorizontalOptions="Center"
+                    VerticalTextAlignment="Center"/>
+
+                <BoxView
+                    Grid.Row="3" 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="{StaticResource BorderColor}"
+                    HeightRequest="1"/>
+
+                <Label
+                    Grid.Row="4" 
+                    Grid.Column="0"
+                    Text="Surname:"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="4" 
+                    Grid.Column="1"
+                    Text="{Binding UserDetail.Surname}"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="5" 
+                    Grid.Column="0"
+                    Text="Given Name:"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="5" 
+                    Grid.Column="1"
+                    Text="{Binding UserDetail.GivenName}"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="6" 
+                    Grid.Column="0"
+                    Text="Business Phones:"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="6" 
+                    Grid.Column="1"
+                    Text="{Binding UserDetail.BusinessPhones}"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="7" 
+                    Grid.Column="0"
+                    Text="Job Title:"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="7" 
+                    Grid.Column="1"
+                    Text="{Binding UserDetail.JobTitle}"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="8" 
+                    Grid.Column="0"
+                    Text="Mobile Phone:"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="8" 
+                    Grid.Column="1"
+                    Text="{Binding UserDetail.MobilePhone}"
+                    FontSize="16"/>
+                <Label
+                    Grid.Row="9" 
+                    Grid.Column="0"
+                    Text="Office Location:"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="9" 
+                    Grid.Column="1"
+                    Text="{Binding UserDetail.OfficeLocation}"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="10" 
+                    Grid.Column="0"
+                    Text="Preferred Language:"
+                    FontSize="16"/>
+
+                <Label
+                    Grid.Row="10" 
+                    Grid.Column="1"
+                    Text="{Binding UserDetail.PreferredLanguage}"
+                    FontSize="16"/>
+            </Grid>
+        </ScrollView>
+
+        <!--Footer-->
+    </Grid>
+</ContentPage>
